@@ -1,0 +1,36 @@
+{
+	"titulo": "titulo 1",
+	"mensaje": "mensaje 1",
+	"fechaCreacion": "{% faker 'isoTimestamp' %}",
+	"estado": "mensaje 1",
+	"respuesta": {
+		"fechaCreacion": "{% faker 'isoTimestamp' %}",
+		"mensaje": "mensaje 1",
+		"autor": {
+			"nombre": "{% faker 'randomFirstName' %}",
+			"correo": "{% faker 'randomEmail' %}",
+			"contraseña": "123456"
+		}
+	},
+	"autor": {
+		"nombre": "{% faker 'randomFirstName' %}",
+		"correo": "{% faker 'randomEmail' %}",
+		"contraseña": "123456"
+	}
+}
+
+
+
+////////////////////
+
+{
+	"titulo": "titulo 1",
+	"mensaje": "mensaje 1",
+	"fechaCreacion": "{% faker 'isoTimestamp' %}",
+	"estado": "activo",
+	"autor": {
+		"nombre": "{% faker 'randomFirstName' %}",
+		"correo": "{% faker 'randomEmail' %}",
+		"contraseña": "123456"
+	}
+}
