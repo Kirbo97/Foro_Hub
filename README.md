@@ -1,15 +1,15 @@
-## Conversor de monedas con exchangerate-api
+## Practicando Spring Framework Challenge Foro Hub
 
-Convierte cualquier tipo de moneda soportada por esta api y obtenga la información relevante.
+Generador de Topicos implementando Spring Framework con seguridad e implementación de Insomnia como API.
 
 ---
 
 ## Uso
-1) Selecione la opcion de "convertir" para revisar que monedas estan permitidas
-2) Debe escoger cual sera moneda base que quiere transformar.
-3) Despues debes colocar el valor monetario que desea transformar.
-4) Por ultimo seleccione el valor monetario que se transformara.
-
-Para un mejor entendimiento en el uso puede consultarlo con la imagen.
-
-![Ejemplo](./IMG/ejemplo.png)
+1) Cree la base de datos llamada "foro_hub_pru" o el que prefieras y configure el archivo "application.properties" para que coincida la contraseña, usuario y nombre de la Base de Datos.
+   ![Ejemplo1](./IMG/ejemplo1.PNG)
+2) Implemente los comando que se encuentra en el archivo txt para la implementacion de Insomnia.
+   ![Ejemplo2](./IMG/ejemplo2.PNG)
+3) Tanto para eliminar como crear y actualizar, requieren tener correo y contraseña del usuario dueño del topico para realizar dichas funciones.
+   ![Ejemplo3](./IMG/ejemplo3.PNG)
+4) Por ultimo, cuando Insomnia ejecute uno de sus comando recibira una respuesta.
+   ![Ejemplo4](./IMG/ejemplo4.PNG)
