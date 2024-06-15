@@ -13,3 +13,6 @@ Generador de Topicos implementando Spring Framework con seguridad e implementaci
    ![Ejemplo3](./IMG/ejemplo3.PNG)
 4) Por ultimo, cuando Insomnia ejecute uno de sus comando recibira una respuesta.
    ![Ejemplo4](./IMG/ejemplo4.PNG)
+
+## Diseño de la Base de datos implementado.
+![Ejemplo5](./IMG/ejemplo5.PNG)
