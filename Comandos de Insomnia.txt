@@ -1,0 +1,56 @@
+//////////////////// Borrar Topico
+
+{
+	"autor": {
+		"correo": "c@mail.com",
+		"contraseña":"345678"
+	}
+}
+
+//////////////////// Actualizar Topico
+
+{
+	"id": 1,
+	"titulo": "Titulo 1.5.5",
+	"mensaje": "mensaje 1.5.5",
+	"autor": {
+		"correo": "a@mail.com",
+		"contraseña":"123456"
+	}
+}
+
+
+//////////////////// Registrar Topico
+
+{
+	"titulo": "Titulo 1",
+	"mensaje": "mensaje 1",
+	"fechacreacion": "{% faker 'isoTimestamp' %}",
+	"numresp": "0",
+	"autor": {
+		"correo": "b@mail.com",
+		"contraseña":"234567"
+	}
+}
+
+}//////////////////// Registrar Usuario
+
+{
+		"nombre": "{% faker 'randomFirstName' %}",
+		"correo": "f@mail.com",
+		"contraseña":"$2a$10$umqCWnTGXwJi./WKYZB6WeBH5jj50Wz8NHgvPeWfNj43YGWySvkPi"
+}
+
+//////////////////// Registrar Respuestas
+
+{
+	"fechacreacion": "{% faker 'isoTimestamp' %}",
+	"mensaje": "solucion 2",
+	"topico": {
+		"titulo": "Titulo 2"
+	},
+	"autor": {
+		"correo": "a@mail.com",
+		"contraseña":"123456"
+	}
+}
