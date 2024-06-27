@@ -12,5 +12,5 @@ public record DatosRegistroTopico(
         LocalDateTime fechacreacion,
         String numresp,
         DatosRegistroUsuario autor
-    ) {
+) {
 }

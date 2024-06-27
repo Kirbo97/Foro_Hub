@@ -21,6 +21,7 @@ import java.util.List;
 public class RespuestaController {
     private List<Topico> topicoList;
     private List<Usuario> usuarioList;
+    private List<Respuesta> respuestaList;
     String frase = "", res="";
 
     @Autowired
@@ -53,14 +54,21 @@ public class RespuestaController {
             topicoList=topicoRepository.findByTituloLike(datosRespuesta.topico().titulo());
             Usuario usuarioViejo= usuarioList.get(0);
             if(topicoList.size()==1){
-                Respuesta respuestaActual= new Respuesta(datosRespuesta);
-                Topico topicoViejo= topicoList.get(0);
-                respuestaActual.setAutor(usuarioList.get(0));
-                topicoViejo.setNumresp(String.valueOf((Integer.parseInt(topicoList.get(0).getNumresp())) + 1));
-                topicoRepository.save(topicoViejo);
-                respuestaActual.setTopico(topicoList.get(0));
-                respuestaRepository.save(respuestaActual);
-                frase="Respuesta Creado";
+                respuestaList=respuestaRepository.findByMensajeLike(datosRespuesta.mensaje());
+
+                if (respuestaList.size() >= 1){
+                    frase="La respuesta que intenta ingresar ya existe, porfavor ingrese otro.";
+                } else {
+                    Respuesta respuestaActual= new Respuesta(datosRespuesta);
+                    Topico topicoViejo= topicoList.get(0);
+                    respuestaActual.setAutor(usuarioList.get(0));
+                    topicoViejo.setNumresp(String.valueOf((Integer.parseInt(topicoList.get(0).getNumresp())) + 1));
+                    topicoRepository.save(topicoViejo);
+                    respuestaActual.setTopico(topicoList.get(0));
+                    respuestaRepository.save(respuestaActual);
+                    frase="Respuesta Creado";
+                }
+
             }else if (topicoList.size()==0){
                 frase="Eliga un topico para responder";
             }

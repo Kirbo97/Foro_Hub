@@ -51,31 +51,36 @@ public class TopicoController {
 
         usuarioList=usuarioRepository.findByCorreoLike(datosRegistroTopico.autor().correo());
         if (usuarioList.size()==1){
-            Topico topicoActual=new Topico(datosRegistroTopico);
-            topicoActual.setAutor(usuarioList.get(0));
-            topicoRepository.save(topicoActual);
-            res="Topico Creado";
+            topicoList=topicoRepository.findByTituloLike(datosRegistroTopico.titulo());
+            if (topicoList.size() >= 1){
+                res="El Topico que intenta ingresar ya existe, porfavor ingrese otro.";
+            } else {
+                Topico topicoActual=new Topico(datosRegistroTopico);
+                topicoActual.setAutor(usuarioList.get(0));
+                topicoRepository.save(topicoActual);
+                res="Topico Creado";
+            }
         } else if (usuarioList.size()==0){
             res="El usuario o la contraseña son incorrecta, por favor ingrese los datos correctamente para registrar un topico";
         }
 
         return ResponseEntity.ok(new DatosMensaje(res));
     }
-/*
-    public String validartopico(@Valid DatosRegistroTopico datosRegistroTopico){
-        String frase = "";
-        usuarioList=usuarioRepository.findByCorreoLike(datosRegistroTopico.autor().correo());
-        if (usuarioList.size()==1){
-            Topico topicoActual=new Topico(datosRegistroTopico);
-            topicoActual.setAutor(usuarioList.get(0));
-            topicoRepository.save(topicoActual);
-            frase="Topico Creado";
-        } else if (usuarioList.size()==0){
-            frase="El usuario o la contraseña son incorrecta, por favor ingrese los datos correctamente para registrar un topico";
+    /*
+        public String validartopico(@Valid DatosRegistroTopico datosRegistroTopico){
+            String frase = "";
+            usuarioList=usuarioRepository.findByCorreoLike(datosRegistroTopico.autor().correo());
+            if (usuarioList.size()==1){
+                Topico topicoActual=new Topico(datosRegistroTopico);
+                topicoActual.setAutor(usuarioList.get(0));
+                topicoRepository.save(topicoActual);
+                frase="Topico Creado";
+            } else if (usuarioList.size()==0){
+                frase="El usuario o la contraseña son incorrecta, por favor ingrese los datos correctamente para registrar un topico";
+            }
+            return frase;
         }
-        return frase;
-    }
-*/
+    */
     // Listar datos
     @GetMapping
     @Operation(summary = "Lista los topicos que estan guardado en la BD")

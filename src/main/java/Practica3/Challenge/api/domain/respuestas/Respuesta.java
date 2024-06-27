@@ -38,4 +38,5 @@ public class Respuesta {
         this.autor = new Usuario(datosRegistroRespuesta.autor());
         //this.topico = new Topico(datosRegistroRespuesta.topico());
     }
+
 }
