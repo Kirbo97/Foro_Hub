@@ -54,3 +54,14 @@
 		"contraseña":"123456"
 	}
 }
+
+//////////////////// Actualizar Respuestas
+
+{
+	"id": 1,
+	"mensaje": "solucion",
+	"autor": {
+		"correo": "a@mail.com",
+		"contraseña":"123456"
+	}
+}
