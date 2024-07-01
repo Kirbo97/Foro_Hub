@@ -28,6 +28,7 @@ public class Respuesta {
     private Long id;
     private String mensaje;
     private LocalDateTime fechacreacion;
+    private Boolean estado;
 
     @ManyToOne
     private Usuario autor;
@@ -39,11 +40,15 @@ public class Respuesta {
         this.mensaje = datosRegistroRespuesta.mensaje();
         this.fechacreacion= datosRegistroRespuesta.fechacreacion();
         this.autor = new Usuario(datosRegistroRespuesta.autor());
+        this.estado =  true;
         //this.topico = new Topico(datosRegistroRespuesta.topico());
     }
+
+    public void desactivarRespuesta() { this.estado = false; }
+
     @Override//aparece cuando esta sobre-escribiendo un metodo y en este caso es el "toString"
     public String toString() {
-        List<String> respuesta = Collections.singletonList(" Respuesta = " + mensaje + " ");
+        List<String> respuesta = Collections.singletonList(" " + mensaje + " ");
         return respuesta.toString();
     }
 }

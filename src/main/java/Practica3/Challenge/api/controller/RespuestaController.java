@@ -39,7 +39,9 @@ public class RespuestaController {
     @Autowired
     private TokenService tokenService;
 
+    // Registrar datos
     @PostMapping
+    @Operation(summary = "Crear Topico y lo guarda en la BD")
     public ResponseEntity autenticarUsuario(@RequestBody @Valid DatosRegistroRespuesta datosRespuesta) {
         Authentication authToken = new UsernamePasswordAuthenticationToken(datosRespuesta.autor().correo(),
                 datosRespuesta.autor().contraseña());
@@ -82,6 +84,13 @@ public class RespuestaController {
         return frase;
     }
 
+    // Listar datos
+    @GetMapping
+    @Operation(summary = "Lista los topicos que estan guardado en la BD")
+    public ResponseEntity<Page<DatosListadoRespuesta>> listadoRespuesta(Pageable paginacion) {
+        //return ResponseEntity.ok(respuestaRepository.findAll(paginacion).map(DatosListadoRespuesta::new));
+        return ResponseEntity.ok(respuestaRepository.findByEstadoTrue(paginacion).map(DatosListadoRespuesta::new));
+    }
 
     // Actualiza datos
     @PutMapping
@@ -100,6 +109,37 @@ public class RespuestaController {
             res = "Datos actualizado";
         } else {
             res ="Usuario denegado, este usuario no tiene acceso a esta respuesta.";
+        }
+        return ResponseEntity.ok(new DatosMensaje(res));
+    }
+
+    // DELETE LOGICO
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Elimina una Respuesta que esta guardado en laa BD")
+    public ResponseEntity autenticarUsuarioParaEliminar(@RequestBody @Valid DatosEliminarRespuesta datosEliminarRespuesta,@PathVariable Long id) {
+        String res;
+        Authentication authToken = new UsernamePasswordAuthenticationToken(datosEliminarRespuesta.autor().correo(),
+                datosEliminarRespuesta.autor().contraseña());
+        var usuarioAutenticado = authenticationManager.authenticate(authToken);
+        var JWTtoken = tokenService.generarToken((Usuario) usuarioAutenticado.getPrincipal());
+        Respuesta respuesta = respuestaRepository.getReferenceById(id);
+        if (respuesta.getEstado()){
+            if(Objects.equals(respuesta.getAutor().getCorreo(), datosEliminarRespuesta.autor().correo())){
+
+                respuesta.setEstado(false);
+                respuestaRepository.save(respuesta);
+
+                Topico topico = topicoRepository.getReferenceById(respuesta.getTopico().getId());
+                int n= Integer.parseInt(topico.getNumresp()) - 1;
+                topico.setNumresp(String.valueOf(n));
+                topicoRepository.save(topico);
+
+                res = "Respuesta eliminado";
+            } else {
+                res ="Usuario denegado, este usuario no tiene acceso a este topico.";
+            }
+        } else {
+            res = "La Respuesta que quiere eliminar ya no existe.";
         }
         return ResponseEntity.ok(new DatosMensaje(res));
     }

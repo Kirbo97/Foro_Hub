@@ -4,6 +4,7 @@ create table respuestas(
     fechacreacion datetime not null,
     autor_id bigint not null,
     topico_id bigint,
+    estado tinyint,
     mensaje varchar(100) not null,
 
     primary key(id),

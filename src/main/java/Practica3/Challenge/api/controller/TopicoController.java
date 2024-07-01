@@ -27,6 +27,7 @@ import java.util.Objects;
 public class TopicoController {
     private List<Usuario> usuarioList;
     private List<Topico> topicoList;
+    private List<Respuesta> respuestaList;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -132,13 +133,28 @@ public class TopicoController {
         var JWTtoken = tokenService.generarToken((Usuario) usuarioAutenticado.getPrincipal());
         Topico topico = topicoRepository.getReferenceById(id);
 
-        if(Objects.equals(topico.getAutor().getCorreo(), datosEliminarTopico.autor().correo())){
-            topico.setEstado(false);
-            topicoRepository.save(topico);
-            res = "Topico eliminado";
+        if (topico.getEstado()){
+            if(Objects.equals(topico.getAutor().getCorreo(), datosEliminarTopico.autor().correo())){
+                respuestaList=respuestaRepository.findByTopico_id(topico.getId());
+
+                if (respuestaList.size() >= 1){
+                    for (int x=0; respuestaList.size() > x; x++){
+                        Respuesta respuesta = respuestaRepository.getReferenceById(respuestaList.get(x).getId());
+                        respuesta.setEstado(false);
+                        respuestaRepository.save(respuesta);
+                    }
+                }
+
+                topico.setEstado(false);
+                topicoRepository.save(topico);
+                res = "Topico eliminado";
+            } else {
+                res ="Usuario denegado, este usuario no tiene acceso a este topico.";
+            }
         } else {
-            res ="Usuario denegado, este usuario no tiene acceso a este topico.";
+            res = "El Topico que quiere eliminar ya no existe.";
         }
+
         return ResponseEntity.ok(new DatosMensaje(res));
     }
     /*
