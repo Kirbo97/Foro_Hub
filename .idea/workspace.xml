@@ -34,15 +34,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ApiApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/FABIAN DAQUILEMA/Desktop/Cursos_Online/Programacion/Oracle one/Java/Proyecto Challenges/Foro Hub Res&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ApiApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/FABIAN DAQUILEMA/Desktop/Cursos_Online/Programacion/Oracle one/Java/Proyecto Challenges/Foro Hub Res",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Practica3.Challenge.api.controller" />
@@ -61,9 +64,12 @@
       <recent name="C:\Users\FABIAN DAQUILEMA\Desktop\Cursos_Online\Programacion\Oracle one\Java\Proyecto Challenges\Practicando Spring Framework Challenge Foro Hub\src\main\java\Practica3\Challenge\api\domain\topicos" />
       <recent name="C:\Users\FABIAN DAQUILEMA\Desktop\Cursos_Online\Programacion\Oracle one\Java\Proyecto Challenges\Practicando Spring Framework Challenge Foro Hub\src\main\java\Practica3\Challenge\api" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
+    <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="Practica3.Challenge.api.domain.respuestas" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Practica3.Challenge.api.domain.topicos" />
+      <recent name="Practica3.Challenge.api.domain.respuestas" />
       <recent name="Practica3.Challenge.api.infra.security" />
       <recent name="Practica3.Challenge.api.domain.usuarios" />
       <recent name="Practica3.Challenge.api.controller" />
@@ -100,7 +106,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Practica3/Challenge/api/controller/TopicoController.java</url>
-          <line>73</line>
+          <line>74</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
